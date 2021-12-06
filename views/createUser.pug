@@ -1,0 +1,23 @@
+extends index.pug 
+
+block content 
+    form(action=`/users/create`, method="POST") 
+        .card(style='width: 20em')
+            img.card-img-top(src='https://ebest.vn/wp-content/uploads/2021/07/giai-ma-giac-mo-thay-gai-dep.jpg' alt='...')
+            .input-group.flex-nowrap
+                input.form-control(
+                    type='text' 
+                    placeholder='Username' 
+                    aria-label='Username' 
+                    aria-describedby='addon-wrapping' 
+                    name='name')
+                input.form-control(
+                    type='text' 
+                    placeholder='Email' 
+                    aria-label='Email' 
+                    aria-describedby='addon-wrapping' 
+                    name='email')
+                
+                          
+
+            button(type="submit") Update
