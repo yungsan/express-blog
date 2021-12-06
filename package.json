@@ -7,6 +7,9 @@
     "start": "nodemon server.js"
   },
   "author": "",
+  "engines": {
+    "node": "16.13.0"
+  },
   "license": "ISC",
   "devDependencies": {
     "dotenv": "^10.0.0",
