@@ -12,7 +12,6 @@
   },
   "license": "ISC",
   "devDependencies": {
-    "dotenv": "^10.0.0",
     "nodemon": "^2.0.15"
   },
   "dependencies": {
@@ -21,6 +20,5 @@
     "node-fetch": "2.0",
     "pug": "^3.0.2",
 	"dotenv": "^10.0.0",
-    "nodemon": "^2.0.15"
   }
 }
