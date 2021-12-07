@@ -12,6 +12,7 @@ const usersRouter = require("./routes/usersRouter");
 const db = require("./config/db/connect");
 db.connect();
 
+
 // config
 // app.set('port', process.env.PORT);
 app.set("views", path.join(__dirname, "views"));
@@ -25,8 +26,9 @@ app.use("/users", usersRouter);
 
 app.listen(process.env.PORT || 3000, function () {
   console.log(
-    "Express server listening on port %d in %s mode",
+    "Express server listening on port %d in %s mode:\nhttp://localhost:%s",
     this.address().port,
-    app.settings.env
+    app.settings.env,
+    this.address().port
   );
 });
