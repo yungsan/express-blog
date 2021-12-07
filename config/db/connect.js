@@ -3,7 +3,7 @@ const url = 'mongodb://localhost/blog';
 
 async function connect(){
     try {
-        await mongoose.connect(url);
+        await mongoose.connect(process.env.MONGODB_URI || url);
         console.log('Connected!');
     } catch (error) {
         throw error;
