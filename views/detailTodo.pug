@@ -1,0 +1,30 @@
+extends index.pug
+
+block content   
+	h1.text-center What do you want to do today ?
+	.row.mt-5.col-lg-8.offset-2.g-0
+		form(action=`/todo/editTask?`, method="get") 
+			input(type="text" value=data._id name='id' hidden)
+			.form-group.row.g-0
+				.col-10
+					input(
+            type="text" 
+            class="form-control p-3" 
+            placeholder="edit task..." 
+            name='task'
+            value=data.task
+            autofocus)
+				.col-2
+					button(type="submit" class='btn btn-primary p-3') Save
+
+								
+						
+
+						
+
+
+			
+			
+
+
+		

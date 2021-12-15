@@ -1,0 +1,18 @@
+extends index.pug 
+
+block content 
+    .flex
+        .register-form
+            p.notif=message
+            form(action="/account/register", method="POST") 
+                label username 
+                input(type="text" name='username')
+                label email 
+                input(type="text" name='email')
+                label password 
+                input(type="password" name='password') 
+                label confirm password 
+                input(type="password" name='confirmPassword') 
+                .flex
+                    a(href="/account") Have a Account ? Login
+                    button(type="submit" class='btn') Login

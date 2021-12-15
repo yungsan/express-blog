@@ -1,55 +1,186 @@
+:root {
+  --bg: #0e153a;
+  --bg0: #3d5af1;
+  --bg1: #e2f3f5; 
+  --bg2: #22d1ee;
+  --color: #f9ff21;
+  --color1: #22eaaa;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-size: 1.2em;
-}
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-td,
-th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-
-.heading {
-  color: #f6214b;
-}
-.center {
-  text-align: center;
-}
-.wrap {
-  width: 60%;
-  margin: 0 auto;
-  text-align: justify;
-}
-
-.navbar {
-  list-style: none;
-  height: 10%;
-  background: lightblue;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.navbar > .nav-item {
-  width: 20%;
-}
-
-.navbar > .nav-item > .nav-link, a{
-  text-decoration: none;
-  color: black;
-  text-transform: uppercase;
-  font-weight: bold;
+  font-family: 'Noto sans';
 }
 
 a{
-  font-weight: normal;
+  text-decoration: none;
+}
+.navbar{
+  width: 100%;
+  height: 3em;
+  padding: 1em 0;
+  background: var(--bg);
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav-item, .nav-brand{
+  width: 20%;
+  text-align: center;
+}
+.nav-item > .nav-link,
+.nav-brand > .nav-link{
+  color: white;
+  padding: .5em 0;
+}
+.nav-brand > .nav-link{
+  font-family: 'Researcher';
+  text-transform: uppercase;
+  font-size: 2.5em;
+}
+.nav-item > .nav-link.active{
+  background: var(--bg0);
+  padding: .3em 1em;
+  border-radius: 1em;
+}
+.heading{
+  text-align: center;
+}
+.flex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+section{
+  margin: 3em 0;
 }
 
+section#todoUI{
+  width: 100%;
+  height: 200px;
+  text-align: center;
+}
+section#todoUI.flex{
+  align-items: flex-start;
+}
+input{
+  width: 100%;
+  padding: .5em;
+  outline: none;
+  font-size: 1.3em;
+  border-radius: 2em;
+  border: 3px solid var(--bg0);
+}
+input::placeholder{
+  font-size: .8em;
+}
+.btn{
+  border: none;
+  background: transparent;
+  border-radius: 2em;
+  padding: 1em;
+  cursor: pointer;
+}
+.btn > i{
+  font-size: 2em;
+  color: var(--bg0);
+  cursor: pointer;
+}
+.todoInputWrap{
+  width: 50%;
+}
+.form-control{
+  position: relative;
+}
+.form-control input{
+  width: 70%;
+}
+.todoInputWrap .btn{
+  position: absolute;
+  top: 10%;
+  right: 15%;
+}
+.todoInputWrap i{
+  transition: .25s ease-in;
+}
+.todoInputWrap .btn:hover i{
+  color: var(--bg);
+}
+
+.todoRenderList{
+  text-align: left;
+  width: 50%;
+}
+.list{
+  list-style: none;
+}
+.list .list-item{
+  width: 90%;
+  margin-bottom: 1.1em;
+}
+.todoRenderList .list .list-item .item{
+  width: 90%;
+  text-align: justify;
+}
+.todoRenderList .list .list-item .item.action{
+  width: 10%;
+  text-align: center;
+}
+.todoRenderList .list .list-item .item.item.action i{
+  font-size: 1.5em;
+  color: var(--color1);
+  cursor: pointer;
+}
+.todoRenderList .list .list-item .item.item.action i:hover{
+  color: var(--bg0);
+}
+.todoRenderList .list .list-item .item.text a{
+  color: var(--bg);
+}
+
+.login-form, .register-form{
+  width: 50%;
+  padding: 3em 0;
+  position: relative;
+}
+.login-form label,
+.register-form label{
+  width: 100%;
+  display: block;
+  padding: 1em 0;
+  text-transform: uppercase;
+}
+.login-form input,
+.register-form input{
+  width: 100%;
+  border-radius: 0 1em 0 0;
+}
+.login-form .btn,
+.register-form .btn{
+  background: var(--bg0);
+  margin: 1em 0;
+  width: 20%;
+  color: white;
+}
+.login-form a,
+.register-form a{
+  margin: 1em 0;
+  width: 80%;
+  color: var(--bg0);
+}
+.login-form .notif,
+.register-form .notif{
+  width: 50%;
+  margin: 0 auto;
+  border-radius: .5em;
+  text-align: center;
+  color: white;
+  background: red;
+  /* padding: .3em 0; */
+  text-transform: uppercase;
+  font-weight: bold;
+}

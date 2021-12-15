@@ -1,0 +1,13 @@
+extends index.pug 
+
+block content 
+    .flex
+        .login-form
+            form(action="/account", method="POST") 
+                label username 
+                input(type="text" name='username')
+                label password 
+                input(type="password" name='password') 
+                .flex
+                    a(href="/account/register") Don't have a Account ? 
+                    button(type="submit" class='btn') Login
