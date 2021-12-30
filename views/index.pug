@@ -1,8 +1,9 @@
 html
   head
     title= title
-    link(rel="stylesheet", href="/css/style.css")
-    link(rel="stylesheet", href="/icon/css/all.css")
+    include adminViews/head
+     link(rel="stylesheet", href="/css/style.css")
+    //- link(rel="stylesheet", href="/icon/css/all.css")
     link(rel="stylesheet", href="/css/animation.css")
   body
     .navbar
@@ -11,13 +12,36 @@ html
       li.nav-item
         a.nav-link.active(href='/') Homepage
       li.nav-item
-        a.nav-link(href='/todo') Todolist
+        a.nav-link(href='/posts') Posts
       li.nav-item
-        a.nav-link(href='/posts') Post
+        a.nav-link(href='/account') Account
       li.nav-item
-        a.nav-link(href='/account') Login
-      li.nav-item
-        a.nav-link(href='/about') About
+        a.nav-link(href='/account/register') Register
     block content
-    script(src='/js/clickEvent.js')
-      
+    <script src="/js/clickEvent.js"></script>
+    <!-- jQuery -->
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Ekko Lightbox -->
+    <script src="/plugins/ekko-lightbox/ekko-lightbox.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="/dist/js/adminlte.min.js"></script>
+    <!-- Filterizr-->
+    <script src="/plugins/filterizr/jquery.filterizr.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="/dist/js/demo.js"></script>
+    script.
+      $(function () {
+      $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox({
+      alwaysShowClose: true
+      });
+      });
+      $('.filter-container').filterizr({gutterPixels: 3});
+      $('.btn[data-filter]').on('click', function() {
+      $('.btn[data-filter]').removeClass('active');
+      $(this).addClass('active');
+      });
+      })

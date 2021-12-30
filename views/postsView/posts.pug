@@ -1,0 +1,22 @@
+extends ../index.pug
+
+block content 
+  a(class='new-post-btn' href=`/posts/newPost`)
+    i.fal.fa-plus
+  section.content.flex
+    .posts
+      each post in data
+        .post-block.flex
+          a(href=`/posts/detailPost/${post._id}` class='thumbnail')
+            img(src=`/upload/${post.thumbnail}`, alt="thumbnail")
+          .post-des 
+            a(href="#" class='post-title')
+              h3.title=post.title
+            .post-tags 
+              span.btn abc
+              span.btn abc
+            .post-author 
+              span.author=post.author 
+              span=date(post._id.getTimestamp())
+    .sidebar 
+      p meomeo

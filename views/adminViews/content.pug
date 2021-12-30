@@ -1,0 +1,106 @@
+extends layout.pug
+block content
+  .content-wrapper
+    // Content Header (Page header)
+    .content-header
+      .container-fluid
+        .row.mb-2
+          .col-sm-6
+            h1.m-0 Dashboard
+          // /.col
+          .col-sm-6
+            ol.breadcrumb.float-sm-right
+              li.breadcrumb-item
+                a(href='#') Home
+              li.breadcrumb-item.active Dashboard v1
+          // /.col
+        // /.row
+      // /.container-fluid
+    // /.content-header
+    // Main content
+    section.content
+      .container-fluid
+        // Small boxes (Stat box)
+        .row
+          .col-lg-3.col-6
+            // small box
+            .small-box.bg-info
+              .inner
+                h3=numberOf.ofAdmin
+                p Admin
+              .icon
+                i.ion.ion-bag
+              a.small-box-footer(href='#')
+                | More info 
+                i.fas.fa-arrow-circle-right
+          // ./col
+          .col-lg-3.col-6
+            // small box
+            .small-box.bg-success
+              .inner
+                h3=numberOf.ofMods
+                p Mods
+              .icon
+                i.ion.ion-stats-bars
+              a.small-box-footer(href='#')
+                | More info 
+                i.fas.fa-arrow-circle-right
+          // ./col
+          .col-lg-3.col-6
+            // small box
+            .small-box.bg-warning
+              .inner
+                h3=numberOf.ofUsers
+                p Users
+              .icon
+                i.ion.ion-person-add
+              a.small-box-footer(href='#')
+                | More info 
+                i.fas.fa-arrow-circle-right
+          // ./col
+          .col-lg-3.col-6
+            // small box
+            .small-box.bg-danger
+              .inner
+                h3=data.length
+                p Total
+              .icon
+                i.ion.ion-pie-graph
+              a.small-box-footer(href='#')
+                | More info 
+                i.fas.fa-arrow-circle-right
+          // ./col
+        // /.row
+      .container-fluid
+        .row
+          .col-12
+            .card
+              .card-header
+                h3.card-title DataTable with minimal features &amp; hover style
+              // /.card-header
+              .card-body
+                table#example2.table.table-bordered.table-hover
+                  thead
+                    tr
+                      th Username
+                      th Email
+                      th Role
+                      th Joined
+                  tbody
+                    each user in data
+                      tr(style="font-family: 'Noto sans'")
+                        td
+                          a(href="/admin/user/"+user._id)=user.username
+                        td=user.email
+                        td=user.role
+                        td=user._id.getTimestamp()
+                  tfoot
+                    tr
+                      th Username
+                      th Email
+                      th Role
+                      th Joined
+              // /.card-body
+            // /.card
+          // /.col
+        // /.row

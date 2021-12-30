@@ -1,0 +1,11 @@
+extends ../index.pug 
+
+block content
+  button.btn.back-to-top.fa.fa-arrow-up
+  h1.title.center=data.title
+  div
+    .filter-container.p-0.row(style='margin: 0 auto')
+        each image, index in data.images
+          .filtr-item.col-sm-3(data-category='1' data-sort='white sample')
+            a(href=`/upload/${image}` data-toggle='lightbox' data-title=`Picture ${index}`)
+              img.img-fluid.mb-2(src=`/upload/${image}` alt='white sample')

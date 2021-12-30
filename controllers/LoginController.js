@@ -3,21 +3,41 @@ const jwt = require("jsonwebtoken");
 
 class LoginController {
   // [GET] /login
-  indexLoginGet(req, res) {
-    res.render("login", { title: "Login form" });
+  async indexLoginGet(req, res) {
+    console.log("/login");
+    
+    try {
+    
+      const who = jwt.verify(req.signedCookies.loginToken, process.env.TOKEN);
+      console.log(who);
+    
+      const loggedUser = await UsersSchema.findOne({ _id: who.id });
+      console.log('loggedUser', loggedUser)
+      
+      if (loggedUser.role !== 'admin')
+        return res.render("me", { 
+          title: "Account", 
+          user: loggedUser, 
+        });
+      
+      res.redirect("/admin");
+
+    } catch (err) {
+      console.log("Do not login --> /account");
+      res.render("login", { title: "Login form" });
+    }
   }
 
   // [POST] /login
   indexLoginPost(req, res) {
     UsersSchema.findOne(req.body, (err, user) => {
-
       if (user) {
         const token = jwt.sign({ id: user._id }, process.env.TOKEN);
 
         // set cookie
-        res.cookie("loginToken", token, {signed: true});
-        
-        return res.redirect('/todo')
+        res.cookie("loginToken", token, { signed: true });
+
+        return res.redirect("/");
       }
 
       res.status(500).json("Wrong username OR password!");
@@ -51,6 +71,13 @@ class LoginController {
       }
     );
   }
+
+  // [POST] /logout
+  logout(req, res){
+    res.clearCookie('loginToken');
+    res.redirect('/account');
+  }
+
 }
 
 module.exports = new LoginController();

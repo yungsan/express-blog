@@ -1,0 +1,19 @@
+extends ../index.pug
+
+block content 
+  form(action="/posts/newPost" method="post" enctype='multipart/form-data') 
+    section.new-post.flex
+      .content-block
+        p=error
+      .content-block 
+        h2.title Author:
+        input(type="text" name='author' class='author' value=author readonly)
+      .content-block 
+        h2.title Title
+        input(type="text" name='title')
+      .content-block 
+        h2.titel Content
+        input(type='file' name='images' multiple accept='image/*')
+      .content-block
+        button(type="submit" class='btn') Post! 
+        

@@ -1,0 +1,188 @@
+extends ../layout.pug
+block content 
+  .content-wrapper
+    // Content Header (Page header)
+    section.content-header
+      .container-fluid
+        .row.mb-2
+          .col-sm-6
+            h1 Profile
+          .col-sm-6
+            ol.breadcrumb.float-sm-right
+              li.breadcrumb-item
+                a(href='/admin') Home
+              li.breadcrumb-item.active User Profile
+      // /.container-fluid
+    // Main content
+    section.content
+      .container-fluid
+        .row
+          .col-md-3
+            // Profile Image
+            .card.card-primary.card-outline
+              .card-body.box-profile
+                .text-center
+                    img.profile-user-img.img-fluid.img-circle(src=`${user.avatar}` alt='User profile picture')
+                h3.profile-username.text-center=user.username
+                p.text-muted.text-center Software Engineer
+                ul.list-group.list-group-unbordered.mb-3
+                  li.list-group-item
+                    b Followers
+                    a.float-right 1,322
+                  li.list-group-item
+                    b Following
+                    a.float-right 543
+                  li.list-group-item
+                    b Friends
+                    a.float-right 13,287
+                a.btn.btn-primary.btn-block(href='#')
+                  b Follow
+          .col-md-9
+            .card
+              .card-header.p-2
+                ul.nav.nav-pills
+                  li.nav-item
+                    a.nav-link.active(href='#activity' data-toggle='tab') Activity
+                  li.nav-item
+                    a.nav-link(href='#timeline' data-toggle='tab') Timeline
+                  li.nav-item
+                    a.nav-link(href='#settings' data-toggle='tab') Settings
+              // /.card-header
+              .card-body
+                .tab-content
+                  #activity.active.tab-pane
+                    if posts
+                      each post in posts
+                        .post
+                          .user-block
+                            img.img-circle.img-bordered-sm(src=`${user.avatar}` alt='User Image')
+                            span.username
+                              a(href='#')=user.username
+                              form(action=`/posts/detailPost/${post._id}?_method=DELETE`, method="POST") 
+                                button.float-right.btn.btn-flat.btn-danger(type='submit')
+                                  i.fas.fa-times
+                            span.description=fomatted_date(post._id.getTimestamp())
+                            span.description=post.title + ' ~ ' + post.size + ' photos'
+                          div
+                          .filter-container.p-0.row
+                              each image of post.images
+                                .filtr-item.col-sm-2(data-category='1' data-sort='white sample')
+                                  a(href='https://via.placeholder.com/1200/FFFFFF.png?text=1' data-toggle='lightbox' data-title='sample 1 - white')
+                                    img.img-fluid.mb-2(src=`/upload/${image}` alt='white sample')
+
+                  // /.tab-pane
+                  #timeline.tab-pane
+                    // The timeline
+                    .timeline.timeline-inverse
+                      // timeline time label
+                      .time-label
+                        span.bg-danger
+                          | 10 Feb. 2014
+                      // /.timeline-label
+                      // timeline item
+                      div
+                        i.fas.fa-envelope.bg-primary
+                        .timeline-item
+                          span.time
+                            i.far.fa-clock
+                            |  12:05
+                          h3.timeline-header
+                            a(href='#') Support Team
+                            |  sent you an email
+                          .timeline-body
+                            | Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
+                            | weebly ning heekya handango imeem plugg dopplr jibjab, movity
+                            | jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
+                            | quora plaxo ideeli hulu weebly balihoo...
+                          .timeline-footer
+                            a.btn.btn-primary.btn-sm(href='#') Read more
+                            a.btn.btn-danger.btn-sm(href='#') Delete
+                      // END timeline item
+                      // timeline item
+                      div
+                        i.fas.fa-user.bg-info
+                        .timeline-item
+                          span.time
+                            i.far.fa-clock
+                            |  5 mins ago
+                          h3.timeline-header.border-0
+                            a(href='#') Sarah Young
+                            |  accepted your friend request
+                      // END timeline item
+                      // timeline item
+                      div
+                        i.fas.fa-comments.bg-warning
+                        .timeline-item
+                          span.time
+                            i.far.fa-clock
+                            |  27 mins ago
+                          h3.timeline-header
+                            a(href='#') Jay White
+                            |  commented on your post
+                          .timeline-body
+                            | Take me to your leader!
+                            | Switzerland is small and neutral!
+                            | We are more like Germany, ambitious and misunderstood!
+                          .timeline-footer
+                            a.btn.btn-warning.btn-flat.btn-sm(href='#') View comment
+                      // END timeline item
+                      // timeline time label
+                      .time-label
+                        span.bg-success
+                          | 3 Jan. 2014
+                      // /.timeline-label
+                      // timeline item
+                      div
+                        i.fas.fa-camera.bg-purple
+                        .timeline-item
+                          span.time
+                            i.far.fa-clock
+                            |  2 days ago
+                          h3.timeline-header
+                            a(href='#') Mina Lee
+                            |  uploaded new photos
+                          .timeline-body
+                            img(src='https://placehold.it/150x100' alt='...')
+                            img(src='https://placehold.it/150x100' alt='...')
+                            img(src='https://placehold.it/150x100' alt='...')
+                            img(src='https://placehold.it/150x100' alt='...')
+                      // END timeline item
+                      div
+                        i.far.fa-clock.bg-gray
+                  // /.tab-pane
+                  #settings.tab-pane
+                    form(action=`/admin/user/${user._id}?_method=PUT` method='POST' class='form-horizontal' enctype='multipart/form-data')
+                      .form-group.row 
+                        <input accept="image/*" name='avatar' type='file' id="avatar" />
+                        img.profile-user-img.img-fluid(id="previewAvatar" src="#" alt="your image" style='width: 20%')
+                      .form-group.row
+                        label.col-sm-2.col-form-label(for='inputName') Username
+                        .col-sm-10
+                          input#inputName.form-control(type='text' name='username' placeholder='username' value=user.username)
+                      .form-group.row
+                        label.col-sm-2.col-form-label(for='inputEmail') Email
+                        .col-sm-10
+                          input#inputEmail.form-control(type='email' name='email' placeholder='email' value=user.email)
+                      .form-group.row
+                        label.col-sm-2.col-form-label(for='inputRole') Role
+                        .col-sm-10
+                          input#inputRole.form-control(type='text' name='role' placehold='role' value=user.role)
+                      .form-group.row
+                        .col-sm-10.offset-sm-2.text-right
+                          button.btn.btn-primary(type='submit') Update
+                      if user.role !== 'admin'
+                        .form-group.row
+                          .col-sm-10.offset-sm-2.text-right
+                            button.btn.btn-danger(type='submit') Delete
+       
+                  // /.tab-pane
+                // /.tab-content
+              // /.card-body
+            // /.card
+          // /.col
+        // /.row
+      // /.container-fluid
+    // /.content
+
+
+          
