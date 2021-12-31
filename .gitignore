@@ -1,4 +1,8 @@
 node_modules
 .env
-upload
-test
+
+# exclude everything
+test/*
+public/upload/*
+
+# exception to the rule
