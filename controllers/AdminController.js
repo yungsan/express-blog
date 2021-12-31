@@ -23,7 +23,7 @@ class AdminController{
 
   async detailUser(req, res, next){
     const user = await UsersSchema.findOne({ _id: req.params.id });
-    const posts = await PostsSchema.find({ author: user.username });
+    const posts = await PostsSchema.find({ author: user.username }).sort({ _id: -1 });
     const fomatted_date = (date) => moment(date).format('DD-MM-YYYY');
     
     res.render('adminViews/users/detailUser', { 

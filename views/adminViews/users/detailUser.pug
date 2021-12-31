@@ -1,4 +1,5 @@
 extends ../layout.pug
+
 block content 
   .content-wrapper
     // Content Header (Page header)
@@ -42,9 +43,7 @@ block content
               .card-header.p-2
                 ul.nav.nav-pills
                   li.nav-item
-                    a.nav-link.active(href='#activity' data-toggle='tab') Activity
-                  li.nav-item
-                    a.nav-link(href='#timeline' data-toggle='tab') Timeline
+                    a.nav-link.active(href='#activity' data-toggle='tab') Posts
                   li.nav-item
                     a.nav-link(href='#settings' data-toggle='tab') Settings
               // /.card-header
@@ -65,10 +64,9 @@ block content
                             span.description=post.title + ' ~ ' + post.size + ' photos'
                           div
                           .filter-container.p-0.row
-                              each image of post.images
-                                .filtr-item.col-sm-2(data-category='1' data-sort='white sample')
-                                  a(href='https://via.placeholder.com/1200/FFFFFF.png?text=1' data-toggle='lightbox' data-title='sample 1 - white')
-                                    img.img-fluid.mb-2(src=`/upload/${image}` alt='white sample')
+                            .filtr-item.col-sm-8.offset-2(data-category='1' data-sort='white sample')
+                              a(href=`/posts/detailPost/${post._id}` data-toggle='lightbox' data-title='sample 1 - white')
+                                img.img-fluid.mb-2(src=`/upload/${post.images[0]}` alt='white sample')
 
                   // /.tab-pane
                   #timeline.tab-pane

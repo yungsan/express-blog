@@ -10,7 +10,7 @@ block content
           a(href=`/posts/detailPost/${post._id}` class='thumbnail')
             img(src=`/upload/${post.thumbnail}`, alt="thumbnail")
           .post-des 
-            a(href="#" class='post-title')
+            a(href=`/posts/detailPost/${post._id}` class='post-title')
               h3.title=post.title
             .post-tags 
               span.btn abc

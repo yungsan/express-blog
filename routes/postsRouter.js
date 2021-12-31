@@ -8,7 +8,7 @@ app.delete('/detailPost/:id', PostsController.deletePost);
 app.get('/detailPost/:id', PostsController.detailPost);
 app.route('/newPost')
   .get(isLogin, PostsController.newPost)
-  .post(upload.array('images', 30), PostsController.createPost);
+  .post(upload.array('images', 69), PostsController.createPost);
 app.get('/', PostsController.index);
 
 module.exports = app;

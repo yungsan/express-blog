@@ -3,6 +3,21 @@ const PostsSchema = require('../model/PostsSchema');
 const moment = require('moment');
 const fs = require('fs');
 
+function deleteFiles(files, callback){
+  let i = files.length;
+  files.forEach(function(filepath){
+    fs.unlink('./public/upload/' + filepath, function(err) {
+      i--;
+      if (err) {
+        callback(err);
+        return;
+      } else if (i <= 0) {
+        callback(null);
+      }
+    });
+  });
+}
+
 class PostsController{
   
   async index(req, res, next){
@@ -47,8 +62,22 @@ class PostsController{
 
   async deletePost(req, res, next){
     try{
+      const deletedPost = await PostsSchema.findOne({ _id: req.params.id });
+      
+      deleteFiles(deletedPost.images, function(err) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log('all files removed');
+        }
+      });
+
       await PostsSchema.deleteOne({ _id: req.params.id });
       res.redirect('back');
+      
+     
+      
+
     } catch(error){
       res.json(error);
     }

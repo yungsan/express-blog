@@ -24,10 +24,15 @@ a{
 .ekko-lightbox-container img{
   width: 100% !important;
 }
+.modal-content{
+  width: 60%;
+  height: auto;
+  margin: 0 auto;
+}
 
 .title{
   font-weight: bold;
-  padding: 1em;
+  margin: 1em 0;
 }
 
 .navbar{
@@ -321,6 +326,8 @@ section.content{
 .post-block{
   align-items: flex-start;
   margin: 1em 0;
+  /* border: 2px solid var(--color2); */
+  min-height: 50%;
 }
 .content .thumbnail{
   width: 46%;
