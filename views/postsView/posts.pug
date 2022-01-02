@@ -3,20 +3,23 @@ extends ../index.pug
 block content 
   a(class='new-post-btn' href=`/posts/newPost`)
     i.fal.fa-plus
-  section.content.flex
-    .posts
+  section.content
+    h1.title.center All posts
+    .posts.flex
       each post in data
-        .post-block.flex
-          a(href=`/posts/detailPost/${post._id}` class='thumbnail')
-            img(src=`/upload/${post.thumbnail}`, alt="thumbnail")
+        .post-block
+          .thumbnail
+            a(href=`/posts/detailPost/${post._id}`)
+              img(
+                src=`/upload/low.jpg` 
+                data-src=`/upload/${post.thumbnail}` alt="thumbnail" class='lazyload')
+          .overlay 
           .post-des 
             a(href=`/posts/detailPost/${post._id}` class='post-title')
-              h3.title=post.title
+              h5.title=post.title
             .post-tags 
-              span.btn abc
-              span.btn abc
+              each tag in post.tags
+                span.btn.btn-primary=tag
             .post-author 
               span.author=post.author 
-              span=date(post._id.getTimestamp())
-    .sidebar 
-      p meomeo
+              span.date=date(post._id.getTimestamp())

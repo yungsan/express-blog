@@ -1,11 +1,18 @@
 extends ../index.pug 
 
+block append script 
+  script(src="/js/clickEvent.js")
+
 block content
-  button.btn.back-to-top.fa.fa-arrow-up
+  button.btn.back-to-top.fa.fa-arrow-up.btn-primary
   h1.title.center=data.title
   div
     .filter-container.p-0.row(style='margin: 0 auto;')
       each image, index in data.images
         .filtr-item.col-sm-3(data-category='1' data-sort='white sample')
           a(href=`/upload/${image}` data-toggle='lightbox' data-title=`Picture ${index}`)
-            img.img-fluid.mb-2(src=`/upload/${image}` alt='white sample')
+            img(
+              data-src=`/upload/${image}` 
+              src='/upload/low.jpg' 
+              alt='white sample' 
+              class="lazyload img-fluid mb-2")

@@ -28,11 +28,13 @@ const siteRouter = require("./routes/siteRouter");
 const postsRouter = require('./routes/postsRouter');
 const loginRouter = require('./routes/loginRouter');
 const adminRouter = require('./routes/adminRouter');
+const usersRouter = require('./routes/usersRouter');
 const isLogin = require('./auth/isLogin');
 const isAdmin = require('./auth/isAdmin');
 
 app.use("/", siteRouter);
 app.use('/account', loginRouter);
+app.use('/users', usersRouter);
 app.use('/admin', isLogin, isAdmin, adminRouter);
 app.use('/posts', postsRouter);
 

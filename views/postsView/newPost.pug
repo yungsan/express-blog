@@ -12,8 +12,12 @@ block content
         h2.title Title
         input(type="text" name='title')
       .content-block 
+        h2.title Tags
+        input(type="text" id='tags')
+        ul.list-group#tags-list
+      .content-block 
         h2.titel Content
         input(type='file' name='images' multiple accept='image/*')
       .content-block
-        button(type="submit" class='btn') Post! 
+        button(type="submit" class='btn btn-primary') Post! 
         

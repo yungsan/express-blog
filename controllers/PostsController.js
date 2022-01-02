@@ -38,10 +38,12 @@ class PostsController{
   }
 
   async createPost(req, res, next){
+    // return res.json(req.body);
     try{
 
       req.body.thumbnail = req.files[0].filename;
       req.body.images = req.files.map(file => file.filename);
+      // req.body.tags
       req.body.size = req.body.images.length;
       await PostsSchema.create(req.body);
       res.redirect('/posts');

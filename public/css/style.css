@@ -35,7 +35,7 @@ a{
   margin: 1em 0;
 }
 
-.navbar{
+.my-navbar{
   width: 100%;
   height: auto;
   /* padding: 1em 0; */
@@ -46,12 +46,12 @@ a{
   align-items: center;
   margin-bottom: 1.5em;
 }
-.nav-item, .nav-brand{
+.my-navbar .nav-item, .nav-brand{
   width: 20%;
   text-align: center;
 }
-.nav-item > .nav-link,
-.nav-brand > .nav-link{
+.my-navbar .nav-item > .nav-link,
+.my-navbar .nav-brand > .nav-link{
   color: white;
   padding: .5em 0;
 }
@@ -89,7 +89,7 @@ section#todoUI{
 section#todoUI.flex{
   align-items: flex-start;
 }
-input, textarea{
+input[type='text'], textarea{
   width: 100%;
   padding: .5em;
   outline: none;
@@ -102,17 +102,17 @@ input::placeholder{
 }
 .btn{
   border: none;
-  background: var(--bg0);
+  /* background: var(--bg0); */
   border-radius: 1em;
   color: white;
-  padding: 1em;
+  /* padding: 1em; */
   cursor: pointer;
   text-transform: uppercase;
   font-weight: bold;
 }
 .btn > i{
   font-size: 2em;
-  color: var(--bg0);
+  /* color: var(--bg0); */
   cursor: pointer;
 }
 .b1{
@@ -285,6 +285,7 @@ tr:first-child td{
   width: 3em;
   height: 3em;
   background: var(--bg0);
+  z-index: 1;
 }
 .new-post-btn i{
   font-size: 1.3em;
@@ -317,29 +318,48 @@ textarea{
 }
 section.content{
   /* background: #000; */
-  align-items: flex-start;
 }
 .posts{
-  width: 60%;
+  width: 100%;
   padding: 0 .5em;
+  align-items: flex-start;
 }
 .post-block{
-  align-items: flex-start;
   margin: 1em 0;
-  /* border: 2px solid var(--color2); */
-  min-height: 50%;
+  width: 25%;
+  position: relative;
+  overflow: hidden;
+
+}
+.content .overlay{
+  width: 100%;
+  height: 50%;
+  padding: 0 .5em;
+  opacity: .5;
+  background: #000;
+  position: absolute;
+  bottom: 0;
+  /* left: 50%; */
 }
 .content .thumbnail{
-  width: 46%;
+  width: 100%;
+  height: 100%;
 }
+.content .post-des {
+  width: 100%;
+  height: 50%;
+  padding: 0 .5em;
+  position: absolute;
+  bottom: 0;
+  /* transition: .3s ease-in-out; */
+}
+
 .thumbnail img{
   width: 100%;
+  height: 400px;
+  object-fit: cover;
 }
-.post-des{
-  width: 50%;
-  margin: 0 .5em;
-  padding-left: .5em;
-}
+
 .post-des .btn{
   padding: .3em 1em;
   border-radius: .5em;
@@ -349,11 +369,15 @@ section.content{
   padding: .3em 0;
   margin: 1em 0;
 }
+.post-tags span{
+  margin-bottom: .3em;
+}
 .post-title{
-  color: var(--bg);
+  color: white;
   text-transform: uppercase;
 }
-.post-author{
+.post-author .date{
+  color: white;
 }
 .author{
   padding-right: .5em;

@@ -15,10 +15,7 @@ class LoginController {
       console.log('loggedUser', loggedUser)
       
       if (loggedUser.role !== 'admin')
-        return res.render("me", { 
-          title: "Account", 
-          user: loggedUser, 
-        });
+        return res.redirect(`/users/${loggedUser._id}`);
       
       res.redirect("/admin");
 

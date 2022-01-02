@@ -2,11 +2,11 @@ html
   head
     title= title
     include adminViews/head
-     link(rel="stylesheet", href="/css/style.css")
+    link(rel="stylesheet", href="/css/style.css")
     //- link(rel="stylesheet", href="/icon/css/all.css")
     link(rel="stylesheet", href="/css/animation.css")
   body
-    .navbar
+    .my-navbar
       li.nav-brand
         a.nav-link(href='/') Meo
       li.nav-item
@@ -18,30 +18,33 @@ html
       li.nav-item
         a.nav-link(href='/account/register') Register
     block content
-    <script src="/js/clickEvent.js"></script>
-    <!-- jQuery -->
-    <script src="/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Ekko Lightbox -->
-    <script src="/plugins/ekko-lightbox/ekko-lightbox.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="/dist/js/adminlte.min.js"></script>
-    <!-- Filterizr-->
-    //- <script src="/plugins/filterizr/jquery.filterizr.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="/dist/js/demo.js"></script>
-    script.
-      $(function () {
-      $(document).on('click', '[data-toggle="lightbox"]', function(event) {
-      event.preventDefault();
-      $(this).ekkoLightbox({
-      alwaysShowClose: true
-      });
-      });
-      $('.filter-container').filterizr({gutterPixels: 3});
-      $('.btn[data-filter]').on('click', function() {
-      $('.btn[data-filter]').removeClass('active');
-      $(this).addClass('active');
-      });
-      })
+
+    block script
+      script(src="/js/tags.js")
+      <!-- jQuery -->
+      script(src="/plugins/jquery/jquery.min.js")
+      <!-- Bootstrap -->
+      script(src="/plugins/bootstrap/js/bootstrap.bundle.min.js")
+      <!-- Ekko Lightbox -->
+      script(src="/plugins/ekko-lightbox/ekko-lightbox.min.js")
+      <!-- AdminLTE App -->
+      script(src="/dist/js/adminlte.min.js")
+      <!-- Filterizr-->
+      //- script(src="/plugins/filterizr/jquery.filterizr.min.js")
+      <!-- AdminLTE for demo purposes -->
+      script(src="/dist/js/demo.js")
+      script.
+        $(function () {
+        $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox({
+        alwaysShowClose: true
+        });
+        });
+        $('.filter-container').filterizr({gutterPixels: 3});
+        $('.btn[data-filter]').on('click', function() {
+        $('.btn[data-filter]').removeClass('active');
+        $(this).addClass('active');
+        });
+        })
+      script(src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.0/lazysizes.min.js" async="")

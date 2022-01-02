@@ -11,7 +11,7 @@ const Post = new Schema(
     images: { type: [] },
     size: { type: Number },
     author: {type: String, require: true},
-
+    tags: { type: [] },
   },
   {
     timestamps: {

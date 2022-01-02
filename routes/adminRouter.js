@@ -5,8 +5,7 @@ const upload = require('../upload');
 
 app.route('/user/:id')
   .get(AdminController.detailUser)
-  .delete(AdminController.deleteUser)
-  .put(upload.single('avatar'), AdminController.updateUser);
+  .delete(AdminController.deleteUser);
 app.get('/', AdminController.index);
 
 module.exports = app;

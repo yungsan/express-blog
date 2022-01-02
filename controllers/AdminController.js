@@ -55,4 +55,4 @@ class AdminController{
   }
 }
 
-module.exports = new AdminController('user model');
+module.exports = new AdminController();
