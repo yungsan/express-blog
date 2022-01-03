@@ -4,6 +4,9 @@ node_modules
 
 # exclude everything
 test/*
-public/upload/*
-
+*.jpg
+*.png
+*.jpeg
 # exception to the rule
+!1640617339084-img8.png
+!low.jpg
