@@ -60,6 +60,8 @@ block content
                               form(action=`/posts/detailPost/${post._id}?_method=DELETE`, method="POST") 
                                 button.float-right.btn.btn-flat.btn-danger(type='submit')
                                   i.fas.fa-times
+                                a.float-right.btn.btn-flat.btn-warning(href=`/posts/editPost/${post._id}` target='_blank')
+                                  i.fa.fa-edit
                             span.description=fomatted_date(post._id.getTimestamp())
                             span.description=post.title + ' ~ ' + post.size + ' photos'
                           div

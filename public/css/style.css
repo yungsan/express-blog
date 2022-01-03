@@ -331,17 +331,6 @@ section.content{
   width: 25%;
   position: relative;
   overflow: hidden;
-
-}
-.content .overlay{
-  width: 100%;
-  height: 50%;
-  padding: 0 .5em;
-  opacity: .5;
-  background: #000;
-  position: absolute;
-  bottom: 0;
-  /* left: 50%; */
 }
 .content .thumbnail{
   width: 100%;
@@ -349,10 +338,11 @@ section.content{
 }
 .content .post-des {
   width: 100%;
-  height: 50%;
-  padding: 0 .5em;
+  height: auto;
+  padding: 0 .6em;
   position: absolute;
   bottom: 0;
+  background-color: rgba(0,0,0,0.5);
   /* transition: .3s ease-in-out; */
 }
 
@@ -368,8 +358,8 @@ section.content{
   margin-right: .5em;
 }
 .post-tags{
-  padding: .3em 0;
-  margin: 1em 0;
+  /* padding: .3em 0; */
+  /* margin: 1em 0; */
 }
 .post-tags span{
   margin-bottom: .3em;
@@ -377,6 +367,9 @@ section.content{
 .post-title{
   color: white;
   text-transform: uppercase;
+}
+.post-author{
+  margin-bottom: 1em;
 }
 .post-author .date{
   color: white;
@@ -406,4 +399,41 @@ section.content{
 .back-to-top:hover{
   background-color: var(--bg);
   color: white;
+}
+
+@media only screen and (max-width: 768px) {
+  /* .title{} */
+  .btn, .post-author {
+    font-size: 2em;
+  }
+  .content .overlay{
+    /* height: 25%; */
+  }
+  .content .post-des{
+    height: auto;
+    /* padding: 1em 0; */
+  }
+  .content .title{
+    font-size: 2em;
+  }
+  .thumbnail img{
+    width: 100%;
+    height: auto;
+    /* object-fit: none; */
+  }
+  .post-block{
+    width: 100%;
+  }
+  .login-form, .register-form{
+    width: 90%;
+  }
+  .login-form .btn, .register-form .btn{
+    width: 100%;
+  }
+  .question{
+    flex-direction: column-reverse;
+  }
+  .question a{
+    text-align: center;
+  }
 }

@@ -62,6 +62,41 @@ class PostsController{
     }
   }
 
+  async editPostRender(req, res, next){
+
+    try {
+      const data = await PostsSchema.findOne({ _id: req.params.id });
+      
+      res.render('postsView/editPost', { data });
+
+    } catch (error) {
+      res.json(error)
+    }
+
+  }
+
+  async editPost(req, res, next){
+    // return res.json(req.body);
+    try {
+      await PostsSchema.updateOne(
+        { 
+          _id: req.params.id 
+        },
+        {
+          title: req.body.title,
+          tags: req.body.tags,
+          author: req.body.author
+        }
+      );
+      
+      res.redirect('/posts');
+
+    } catch (error) {
+      res.json(error)
+    }
+
+  }
+
   async deletePost(req, res, next){
     try{
       const deletedPost = await PostsSchema.findOne({ _id: req.params.id });
@@ -76,9 +111,6 @@ class PostsController{
 
       await PostsSchema.deleteOne({ _id: req.params.id });
       res.redirect('back');
-      
-     
-      
 
     } catch(error){
       res.json(error);
