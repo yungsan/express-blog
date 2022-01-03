@@ -89,7 +89,9 @@ section#todoUI{
 section#todoUI.flex{
   align-items: flex-start;
 }
-input[type='text'], textarea{
+input[type='text'], 
+input[type='password'],
+textarea{
   width: 100%;
   padding: .5em;
   outline: none;
