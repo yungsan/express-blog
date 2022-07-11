@@ -9,7 +9,7 @@ const User = new Schema(
     email: { type: String, required: true },
     password: {type: String, require: true},
     role: {type: String, require: true, default: 'user'},
-    avatar: {type: String, default: '/upload/1640617339084-img8.png'}
+    avatar: {type: String, default: '/upload/low.jpg'}
   },
   {
     timestamps: {
